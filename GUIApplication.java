@@ -24,10 +24,9 @@ public class GUIApplication{
         JLabel myLabel = new JLabel("Enter Birthday in yyyy-mm-dd Format:");
         JTextField input1 = new JTextField(10);
         JButton myButton = new JButton("Calculate Age");
-        JLabel LabelledAge = new JLabel("Age: ");
-    }
+        JLabel LabelledAge = new JLabel("Age Will Appear Here ");
 
-    //creates an action listener that will return the age using the current date and the birthday that was entered.
+        //creates an action listener that will return the age using the current date and the birthday that was entered.
         myButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed (ActionEvent button1){
@@ -42,5 +41,14 @@ public class GUIApplication{
                 }
             }
         });
-
+        
+        //make the panel and frame visible after adding all components
+        myPanel.add(myLabel);
+        myPanel.add(input1);
+        myPanel.add(myButton);
+        myPanel.add(LabelledAge);
+        
+        ageFrame.add(myPanel);
+        ageFrame.setVisible(true);
+    }
 }
