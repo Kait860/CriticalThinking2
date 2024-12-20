@@ -1,3 +1,8 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.Period;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,4 +26,21 @@ public class GUIApplication{
         JButton myButton = new JButton("Calculate Age");
         JLabel LabelledAge = new JLabel("Age: ");
     }
+
+    //creates an action listener that will return the age using the current date and the birthday that was entered.
+        myButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed (ActionEvent button1){
+                //try and catch is added to prevent errors
+                try{
+                    LocalDate birthDay = LocalDate.parse(input1.getText());
+                    LocalDate now = LocalDate.now();
+                    Period period = Period.between(birthDay, now);
+                    LabelledAge.setText("You are " + period.getYears() + " years old.");
+                }catch(Exception ex){
+                    LabelledAge.setText("Please enter valid date");
+                }
+            }
+        });
+
 }
